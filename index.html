@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f3ef">
+<meta name="description" content="Sneha Studio Makeup & Hair Academy - Professional makeup, hair styling, bridal beauty and makeup training.">
+<title>Sneha Studio | Makeup & Hair Academy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --cream: #faf6f2;
+  --white: #fff;
+  --pink: #d99a9e;
+  --rose: #b8757c;
+  --dark: #302324;
+  --muted: #817273;
+  --gold: #b99766;
+  --light-pink: #f3e5e2;
+  --serif: 'Playfair Display', serif;
+  --sans: 'DM Sans', sans-serif;
+  --shadow: 0 15px 45px rgba(65,35,35,.08);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+body { background:var(--cream); color:var(--dark); font-family:var(--sans); overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+button { font:inherit; }
+img { display:block; width:100%; object-fit:cover; }
+.container { width:min(1160px, 90%); margin:auto; }
+
+.topbar {
+  background:var(--dark); color:#f8e8e3;
+  text-align:center; padding:10px 15px;
+  font-size:11px; letter-spacing:2px;
+}
+.topbar span { color:#e7b8a4; }
+
+header {
+  height:82px; display:flex; align-items:center;
+  background:rgba(250,246,242,.94);
+  position:sticky; top:0; z-index:1000;
+  border-bottom:1px solid rgba(185,151,102,.15);
+  backdrop-filter:blur(15px);
+}
+.nav { display:flex; align-items:center; justify-content:space-between; }
+.logo { display:flex; flex-direction:column; line-height:1.1; }
+.logo strong { font:600 27px var(--serif); letter-spacing:.5px; }
+.logo small { font-size:9px; letter-spacing:3px; color:var(--gold); margin-top:6px; }
+.nav-links { display:flex; gap:30px; align-items:center; }
+.nav-links a { font-size:12px; font-weight:600; color:#635355; transition:.3s; }
+.nav-links a:hover { color:var(--rose); }
+.nav-cta,.btn {
+  background:var(--dark); color:white; padding:14px 24px;
+  border:1px solid var(--dark); display:inline-flex;
+  align-items:center; justify-content:center; gap:10px;
+  font-size:11px; font-weight:600; letter-spacing:1px;
+  transition:.3s; cursor:pointer;
+}
+.nav-cta:hover,.btn:hover { background:var(--rose); border-color:var(--rose); transform:translateY(-3px); }
+.menu-btn { display:none; border:0; background:none; font-size:23px; color:var(--dark); cursor:pointer; }
+
+.hero { min-height:650px; display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:55px; padding:65px 0 85px; }
+.hero-content { padding-left:3%; }
+.eyebrow { color:var(--rose); font-size:10px; letter-spacing:4px; font-weight:700; text-transform:uppercase; }
+.hero h1 { font:500 clamp(48px,6vw,76px)/1.12 var(--serif); margin:25px 0; }
+.hero h1 em { color:var(--rose); font-weight:400; }
+.hero-desc { color:var(--muted); font-size:14px; line-height:2; max-width:430px; }
+.hero-actions { display:flex; align-items:center; gap:25px; margin-top:35px; flex-wrap:wrap; }
+.text-link { font-size:11px; letter-spacing:1px; font-weight:700; border-bottom:1px solid var(--gold); padding-bottom:7px; }
+.hero-image { height:540px; position:relative; }
+.hero-image img { height:100%; border-radius:48% 48% 5px 5px; }
+.hero-image::before { content:""; position:absolute; inset:15px -15px -15px 15px; border:1px solid var(--gold); border-radius:48% 48% 5px 5px; z-index:-1; }
+.image-note { position:absolute; bottom:30px; left:-45px; background:white; padding:18px 25px; box-shadow:var(--shadow); }
+.image-note strong { font:italic 20px var(--serif); display:block; }
+.image-note small { color:var(--muted); font-size:9px; letter-spacing:2px; }
+
+.stats { background:#f0e5df; padding:32px 0; }
+.stats-grid { display:grid; grid-template-columns:repeat(3,1fr); text-align:center; }
+.stat { border-right:1px solid #dfcbc2; }
+.stat:last-child { border:0; }
+.stat strong { font:500 29px var(--serif); color:var(--rose); }
+.stat p { font-size:10px; letter-spacing:2px; margin-top:7px; color:var(--muted); text-transform:uppercase; }
+
+section { padding:105px 0; }
+.section-head { text-align:center; max-width:620px; margin:0 auto 55px; }
+.section-head h2 { font:500 clamp(34px,4vw,49px)/1.2 var(--serif); margin:17px 0; }
+.section-head h2 em { color:var(--rose); }
+.section-head p { color:var(--muted); font-size:13px; line-height:1.9; }
+
+.services { background:#fff; }
+.service-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:25px; }
+.service-card { background:var(--cream); padding-bottom:30px; transition:.4s; }
+.service-card:hover { transform:translateY(-9px); box-shadow:var(--shadow); }
+.service-card img { height:260px; }
+.service-card-content { padding:25px 25px 0; }
+.service-card h3 { font:500 25px var(--serif); margin-bottom:12px; }
+.service-card p { color:var(--muted); font-size:12px; line-height:1.9; min-height:48px; }
+.service-card a { display:inline-block; font-size:10px; letter-spacing:1px; font-weight:700; color:var(--rose); margin-top:20px; }
+
+.about { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:85px; }
+.about-images { position:relative; padding:0 35px 35px 0; }
+.about-images img { height:490px; }
+.about-images::after { content:""; position:absolute; right:0; bottom:0; width:65%; height:65%; border:1px solid var(--gold); z-index:-1; }
+.about-content h2 { font:500 46px/1.2 var(--serif); margin:20px 0; }
+.about-content h2 em { color:var(--rose); }
+.about-content p { color:var(--muted); font-size:13px; line-height:2; margin-bottom:18px; }
+.about-points { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:30px 0; }
+.about-points div { font-size:12px; font-weight:600; }
+.about-points i { color:var(--gold); margin-right:8px; }
+
+.academy { background:#302324; color:white; }
+.academy .section-head p { color:#c5b3b1; }
+.academy .eyebrow { color:#e3b9a5; }
+.course-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.course { border:1px solid rgba(255,255,255,.17); padding:35px 27px; transition:.3s; }
+.course:hover { background:rgba(255,255,255,.07); border-color:var(--gold); transform:translateY(-6px); }
+.course i { color:#d7ad87; font-size:25px; margin-bottom:25px; }
+.course h3 { font:500 25px var(--serif); margin-bottom:14px; }
+.course p { color:#c5b3b1; font-size:12px; line-height:1.9; min-height:70px; }
+.course a { color:#e8c4aa; font-size:10px; letter-spacing:1px; display:inline-block; margin-top:22px; font-weight:700; }
+.academy .btn { background:var(--gold); border-color:var(--gold); margin-top:35px; }
+.academy .btn:hover { background:var(--rose); border-color:var(--rose); }
+
+.gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:220px 220px; gap:14px; }
+.gallery-grid img { height:100%; transition:.5s; }
+.gallery-item { overflow:hidden; position:relative; }
+.gallery-item:hover img { transform:scale(1.07); }
+.gallery-item:first-child { grid-row:span 2; }
+.gallery-item:last-child { grid-column:span 2; }
+
+.testimonial { background:#f0e5df; }
+.review-card { background:white; max-width:760px; margin:auto; padding:55px; text-align:center; }
+.stars { color:var(--gold); letter-spacing:5px; margin-bottom:20px; }
+.review-card blockquote { font:italic 24px/1.6 var(--serif); color:#554344; }
+.review-card small { display:block; color:var(--rose); font-size:10px; letter-spacing:2px; margin-top:25px; }
+
+.contact { background:white; }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:65px; }
+.contact-info h2 { font:500 45px var(--serif); margin:18px 0; }
+.contact-info p { font-size:13px; color:var(--muted); line-height:2; }
+.contact-detail { display:flex; gap:17px; align-items:center; margin-top:28px; }
+.contact-detail i { width:42px; height:42px; background:var(--light-pink); display:grid; place-items:center; color:var(--rose); }
+.contact-detail strong { display:block; font-size:12px; margin-bottom:5px; }
+.contact-detail span { color:var(--muted); font-size:11px; }
+.booking { background:var(--cream); padding:35px; }
+.booking h3 { font:500 28px var(--serif); margin-bottom:25px; }
+.field { margin-bottom:17px; }
+.field label { display:block; font-size:10px; letter-spacing:1px; margin-bottom:8px; }
+.field input,.field select,.field textarea { width:100%; padding:14px; border:1px solid #e8dbd5; background:white; outline:none; font:12px var(--sans); color:var(--dark); }
+.field input:focus,.field select:focus,.field textarea:focus { border-color:var(--rose); }
+.field textarea { resize:vertical; min-height:85px; }
+.booking .btn { width:100%; }
+
+footer { background:var(--dark); color:white; padding:55px 0 20px; }
+.footer-main { display:flex; justify-content:space-between; gap:30px; align-items:center; padding-bottom:40px; }
+.footer-logo strong { font:500 32px var(--serif); }
+.footer-logo p { font-size:10px; color:#c5b3b1; letter-spacing:2px; margin-top:8px; }
+.socials { display:flex; gap:12px; }
+.socials a { width:42px; height:42px; border:1px solid #685456; display:grid; place-items:center; transition:.3s; }
+.socials a:hover { background:var(--rose); }
+.copyright { border-top:1px solid #584648; padding-top:20px; text-align:center; color:#bca9a8; font-size:10px; }
+
+.whatsapp {
+ position:fixed; right:25px; bottom:25px; width:57px; height:57px;
+ border-radius:50%; background:#25d366; color:white;
+ display:grid; place-items:center; font-size:27px; z-index:999;
+ box-shadow:0 5px 20px #25d36666; transition:.3s;
+}
+.whatsapp:hover { transform:scale(1.1); }
+
+.reveal { opacity:0; transform:translateY(30px); transition:opacity .8s,transform .8s; }
+.reveal.show { opacity:1; transform:translateY(0); }
+
+@media(max-width:850px) {
+ .nav-links { gap:15px; }
+ .hero { gap:30px; min-height:auto; }
+ .hero-image { height:430px; }
+ .about { gap:40px; }
+ .gallery-grid { grid-template-rows:170px 170px; }
+}
+@media(max-width:650px) {
+ header { height:70px; }
+ .menu-btn { display:block; }
+ .nav-cta { display:none; }
+ .nav-links {
+  display:none; position:absolute; top:70px; left:0; width:100%;
+  background:var(--cream); flex-direction:column; padding:25px;
+  box-shadow:var(--shadow); gap:25px;
+ }
+ .nav-links.active { display:flex; }
+ .hero { grid-template-columns:1fr; padding:55px 0 65px; gap:45px; }
+ .hero-content { padding:0; }
+ .hero h1 { font-size:53px; }
+ .hero-image { height:420px; width:85%; margin:auto; }
+ .image-note { left:-25px; }
+ .stats-grid { gap:10px; }
+ .stat strong { font-size:23px; }
+ .stat p { font-size:8px; letter-spacing:1px; }
+ section { padding:75px 0; }
+ .service-grid,.course-grid { grid-template-columns:1fr; }
+ .service-card img { height:280px; }
+ .about,.contact-grid { grid-template-columns:1fr; gap:45px; }
+ .about-images img { height:390px; }
+ .about-content h2,.contact-info h2 { font-size:39px; }
+ .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:190px 190px 190px; }
+ .gallery-item:first-child { grid-row:span 2; }
+ .gallery-item:last-child { grid-column:span 1; }
+ .review-card { padding:35px 22px; }
+ .review-card blockquote { font-size:19px; }
+ .footer-main { flex-direction:column; text-align:center; }
+ .whatsapp { width:52px; height:52px; right:17px; bottom:17px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <span>✦</span> BEAUTY IS AN ART. LET US CREATE YOURS. <span>✦</span>
+</div>
+
+<header>
+ <div class="container nav">
+  <a href="#home" class="logo">
+   <strong>Sneha Studio</strong>
+   <small>MAKEUP & HAIR ACADEMY</small>
+  </a>
+  <nav class="nav-links" id="navLinks">
+   <a href="#home">HOME</a>
+   <a href="#services">SERVICES</a>
+   <a href="#about">ABOUT</a>
+   <a href="#academy">ACADEMY</a>
+   <a href="#gallery">GALLERY</a>
+   <a href="#contact">CONTACT</a>
+  </nav>
+  <a class="nav-cta" href="#contact">BOOK AN APPOINTMENT ↗</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+ </div>
+</header>
+
+<main>
+<section class="container hero" id="home">
+ <div class="hero-content">
+  <div class="eyebrow">WELCOME TO SNEHA STUDIO</div>
+  <h1>Beauty that<br>feels <em>like you.</em></h1>
+  <p class="hero-desc">
+   Discover the art of beauty, elegance and confidence.
+   From stunning bridal makeovers to beautiful hair transformations,
+   we make every moment unforgettable.
+  </p>
+  <div class="hero-actions">
+   <a class="btn" href="#contact">BOOK YOUR SESSION <i class="fa-solid fa-arrow-right"></i></a>
+   <a href="#services" class="text-link">EXPLORE SERVICES</a>
+  </div>
+ </div>
+ <div class="hero-image">
+  <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1000&q=90" alt="Beauty makeup portrait">
+  <div class="image-note">
+   <strong>Feel Beautiful.</strong>
+   <small>LOOK CONFIDENT · BE YOU</small>
+  </div>
+ </div>
+</section>
+
+<div class="stats">
+ <div class="container stats-grid">
+  <div class="stat"><strong>Beauty</strong><p>Personalised Care</p></div>
+  <div class="stat"><strong>Artistry</strong><p>Professional Styling</p></div>
+  <div class="stat"><strong>Academy</strong><p>Learn & Grow</p></div>
+ </div>
+</div>
+
+<section class="services" id="services">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">WHAT WE OFFER</div>
+   <h2>Beauty services made <em>for you.</em></h2>
+   <p>Every look tells a story. Let us help you create yours with personalised beauty experiences.</p>
+  </div>
+
+  <div class="service-grid">
+   <article class="service-card reveal">
+    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=85" alt="Bridal makeup">
+    <div class="service-card-content">
+     <h3>Bridal Makeup</h3>
+     <p>Elegant bridal looks designed to make your special day even more memorable.</p>
+     <a href="#contact">BOOK THIS SERVICE ↗</a>
+    </div>
+   </article>
+   <article class="service-card reveal">
+    <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=800&q=85" alt="Professional makeup">
+    <div class="service-card-content">
+     <h3>Party Makeup</h3>
+     <p>Beautiful, flawless makeup for parties, celebrations and special occasions.</p>
+     <a href="#contact">BOOK THIS SERVICE ↗</a>
+    </div>
+   </article>
+   <article class="service-card reveal">
+    <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=800&q=85" alt="Hair styling">
+    <div class="service-card-content">
+     <h3>Hair Styling</h3>
+     <p>From gorgeous hairstyles to beautiful transformations, find your signature look.</p>
+     <a href="#contact">BOOK THIS SERVICE ↗</a>
+    </div>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="container about">
+  <div class="about-images reveal">
+   <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=85" alt="Professional beauty studio">
+  </div>
+  <div class="about-content reveal">
+   <div class="eyebrow">THE SNEHA EXPERIENCE</div>
+   <h2>Where beauty meets <em>confidence.</em></h2>
+   <p>At Sneha Studio Makeup & Hair Academy, beauty is more than just a look. It is about expressing your personality, celebrating your individuality and feeling confident in your own skin.</p>
+   <p>Whether you are preparing for your big day or beginning your journey as a beauty professional, we welcome you with creativity, care and passion.</p>
+   <div class="about-points">
+    <div><i class="fa-solid fa-check"></i> Personalised Styling</div>
+    <div><i class="fa-solid fa-check"></i> Beauty Expertise</div>
+    <div><i class="fa-solid fa-check"></i> Creative Looks</div>
+    <div><i class="fa-solid fa-check"></i> Learning Support</div>
+   </div>
+   <a class="btn" href="#contact">GET IN TOUCH ↗</a>
+  </div>
+ </div>
+</section>
+
+<section class="academy" id="academy">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">SNEHA STUDIO ACADEMY</div>
+   <h2>Turn your passion into <em>your profession.</em></h2>
+   <p>Learn the art of beauty and take the first step towards your creative career.</p>
+  </div>
+  <div class="course-grid">
+   <article class="course reveal">
+    <i class="fa-solid fa-wand-magic-sparkles"></i>
+    <h3>Professional Makeup</h3>
+    <p>Learn makeup techniques, blending, base preparation and professional finishing.</p>
+    <a href="#contact">ENQUIRE ABOUT COURSE ↗</a>
+   </article>
+   <article class="course reveal">
+    <i class="fa-solid fa-scissors"></i>
+    <h3>Hair Styling</h3>
+    <p>Explore hairstyling techniques, creative looks and professional styling methods.</p>
+    <a href="#contact">ENQUIRE ABOUT COURSE ↗</a>
+   </article>
+   <article class="course reveal">
+    <i class="fa-solid fa-crown"></i>
+    <h3>Bridal Makeup</h3>
+    <p>Discover bridal makeup looks, occasion styling and the art of creating timeless beauty.</p>
+    <a href="#contact">ENQUIRE ABOUT COURSE ↗</a>
+   </article>
+  </div>
+  <div style="text-align:center">
+   <a class="btn" href="#contact">START YOUR BEAUTY JOURNEY ↗</a>
+  </div>
+ </div>
+</section>
+
+<section id="gallery">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">OUR BEAUTY WORLD</div>
+   <h2>A little glimpse of <em>beauty.</em></h2>
+   <p>Explore the world of makeup, hair and timeless elegance.</p>
+  </div>
+  <div class="gallery-grid reveal">
+   <div class="gallery-item"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=700&q=85" alt="Beauty look"></div>
+   <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=85" alt="Makeup artistry"></div>
+   <div class="gallery-item"><img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=700&q=85" alt="Beauty portrait"></div>
+   <div class="gallery-item"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?auto=format&fit=crop&w=700&q=85" alt="Hair styling"></div>
+   <div class="gallery-item"><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=700&q=85" alt="Beauty products"></div>
+  </div>
+ </div>
+</section>
+
+<section class="testimonial">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">A BEAUTIFUL EXPERIENCE</div>
+   <h2>Beauty begins with <em>confidence.</em></h2>
+  </div>
+  <div class="review-card reveal">
+   <div class="stars">★★★★★</div>
+   <blockquote>“Every woman deserves to feel beautiful, confident and special. Let your beauty shine in your own unique way.”</blockquote>
+   <small>SNEHA STUDIO MAKEUP & HAIR ACADEMY</small>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">LET'S CONNECT</div>
+   <h2>Your beauty journey starts <em>here.</em></h2>
+   <p>Ready for a makeover or interested in joining our academy? Get in touch with us.</p>
+  </div>
+
+  <div class="contact-grid">
+   <div class="contact-info reveal">
+    <div class="eyebrow">CONTACT SNEHA STUDIO</div>
+    <h2>We'd love to hear from you.</h2>
+    <p>Have a question or want to book an appointment? Send us a message and let's make something beautiful happen.</p>
+
+    <div class="contact-detail">
+     <i class="fa-brands fa-whatsapp"></i>
+     <div><strong>WhatsApp / Call</strong><span>+91 7083817332</span></div>
+    </div>
+    <div class="contact-detail">
+     <i class="fa-brands fa-instagram"></i>
+     <div><strong>Instagram</strong><span>@your_instagram</span></div>
+    </div>
+    <div class="contact-detail">
+     <i class="fa-solid fa-location-dot"></i>
+     <div><strong>Visit Our Studio</strong><span>Add your salon address here</span></div>
+    </div>
+    <div class="contact-detail">
+     <i class="fa-regular fa-clock"></i>
+     <div><strong>Opening Hours</strong><span>Add your salon timings here</span></div>
+    </div>
+   </div>
+
+   <form class="booking reveal" id="bookingForm">
+    <h3>Book an Appointment</h3>
+    <div class="field">
+     <label>YOUR NAME</label>
+     <input type="text" id="customerName" placeholder="Enter your name" required>
+    </div>
+    <div class="field">
+     <label>PHONE NUMBER</label>
+     <input type="tel" id="customerPhone" placeholder="Enter your phone number" pattern="[0-9+\-\s]{10,15}" required>
+    </div>
+    <div class="field">
+     <label>SELECT A SERVICE</label>
+     <select id="customerService" required>
+      <option value="">Choose a service</option>
+      <option>Bridal Makeup</option>
+      <option>Party Makeup</option>
+      <option>Hair Styling</option>
+      <option>Professional Makeup Course</option>
+      <option>Hair Styling Course</option>
+      <option>Bridal Makeup Course</option>
+      <option>Other Enquiry</option>
+     </select>
+    </div>
+    <div class="field">
+     <label>MESSAGE</label>
+     <textarea id="customerMessage" placeholder="Tell us what you are looking for..."></textarea>
+    </div>
+    <button type="submit" class="btn">SEND BOOKING REQUEST <i class="fa-brands fa-whatsapp"></i></button>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-main">
+   <div class="footer-logo">
+    <strong>Sneha Studio</strong>
+    <p>MAKEUP & HAIR ACADEMY</p>
+   </div>
+   <div class="socials">
+    <a href="#" id="instagramLink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" id="facebookLink" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#" id="footerWhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+   </div>
+  </div>
+  <div class="copyright">
+   © <span id="year"></span> Sneha Studio Makeup & Hair Academy. All Rights Reserved.
+  </div>
+ </div>
+</footer>
+
+<a href="#" class="whatsapp" id="floatingWhatsApp" aria-label="Chat on WhatsApp">
+ <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+// =====================================
+// EDIT YOUR BUSINESS DETAILS HERE
+// =====================================
+
+const BUSINESS = {
+  whatsapp: "91XXXXXXXXXX", // Replace with WhatsApp number, country code included
+  instagram: "https://instagram.com/your_instagram",
+  facebook: "https://facebook.com/your_page"
+};
+
+// Mobile Navigation
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+  menuBtn.innerHTML = navLinks.classList.contains("active")
+    ? '<i class="fa-solid fa-xmark"></i>'
+    : '<i class="fa-solid fa-bars"></i>';
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  });
+});
+
+// Scroll Reveal Animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// WhatsApp Booking
+function openWhatsApp(message) {
+const BUSINESS = {
+  whatsapp: "917083817332"
+};
+
+  const url = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("customerName").value.trim();
+  const phone = document.getElementById("customerPhone").value.trim();
+  const service = document.getElementById("customerService").value;
+  const message = document.getElementById("customerMessage").value.trim();
+
+  const whatsappMessage =
+`Hello Sneha Studio! 🌸
+
+I would like to enquire about an appointment.
+
+Name: ${name}
+Phone: ${phone}
+Service: ${service}
+Message: ${message || "No additional message"}
+
+Please share the details. Thank you!`;
+
+  openWhatsApp(whatsappMessage);
+});
+
+// Floating WhatsApp
+document.getElementById("floatingWhatsApp").addEventListener("click", e => {
+  e.preventDefault();
+  openWhatsApp("Hello Sneha Studio! I would like to know more about your services.");
+});
+
+// Social Links
+document.getElementById("instagramLink").href = BUSINESS.instagram;
+document.getElementById("facebookLink").href = BUSINESS.facebook;
+document.getElementById("footerWhatsApp").href =
+  `https://wa.me/${BUSINESS.whatsapp}`;
+
+// Current Year
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
